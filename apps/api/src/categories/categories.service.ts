@@ -7,13 +7,12 @@ export class CategoriesService {
   constructor(private prisma: PrismaService) {}
 
   async findAll() {
-    return this.prisma.category.findMany({
-      where: { isActive: true },
-      include: { children: true },
-      orderBy: { name: 'asc' },
-    });
-  }
-
+  return this.prisma.category.findMany({
+    where: { isActive: true },
+    include: { children: true },
+    orderBy: { name: 'asc' },
+  });
+}
   async findOne(slug: string) {
     const category = await this.prisma.category.findUnique({
       where: { slug },
