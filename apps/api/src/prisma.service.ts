@@ -10,6 +10,10 @@ export class PrismaService
   implements OnModuleInit, OnModuleDestroy
 {
   constructor() {
+
+    console.log('DATABASE_URL EXISTS:', !!process.env.DATABASE_URL);
+console.log('DATABASE_URL STARTS WITH:', process.env.DATABASE_URL?.substring(0, 30));
+
     const pool = new Pool({
       connectionString: process.env.DATABASE_URL,
     });
